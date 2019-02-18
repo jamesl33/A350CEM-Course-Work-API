@@ -28,7 +28,7 @@ namespace A350CEM_Course_Work
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<AircraftContext>(opt => opt.UseSqlite("Data Source=A350CEM_Course_Work.sqlite3"));
+            services.AddDbContext<Context>(opt => opt.UseSqlite("Data Source=A350CEM_Course_Work.sqlite3"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -10,13 +10,13 @@ using System;
 
 namespace A350CEM_Course_Work.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/aircraft")]
     [ApiController]
     public class AircraftController : ControllerBase
     {
-        private readonly AircraftContext _context;
+        private readonly Context _context;
 
-        public AircraftController(AircraftContext context)
+        public AircraftController(Context context)
         {
             _context = context;
         }
@@ -53,11 +53,11 @@ namespace A350CEM_Course_Work.Controllers
 
         // Update
         [HttpPut("bySerialNumber")]
-        public async Task<IActionResult> PutAircraftBySerialNumber(string serialNumber, Aircraft aircraftUpdate)
+        public async Task<IActionResult> PutAircraftBySerialNumber(string serialNumber, Aircraft aircraft)
         {
             // TODO(James Lee) - Do some form of verification here; don't just blindly update.
 
-            _context.Entry(aircraftUpdate).State = EntityState.Modified;
+            _context.Entry(aircraft).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -74,9 +74,9 @@ namespace A350CEM_Course_Work.Controllers
                 return NotFound();
             }
 
-            var aircraftDelete = await aircraft.FirstAsync();
+            var toDelete = await aircraft.FirstAsync();
 
-            _context.Aircraft.Remove(aircraftDelete);
+            _context.Aircraft.Remove(toDelete);
             await _context.SaveChangesAsync();
 
             return NoContent();
