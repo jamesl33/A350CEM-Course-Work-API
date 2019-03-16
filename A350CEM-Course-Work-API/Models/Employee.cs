@@ -10,6 +10,12 @@ namespace A350CEM_Course_Work.Models
         [Required]
         public int EmployeeNumber { get; set; }
 
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Speciality { get; set; }
+
         public virtual Team Team { get; set; }
     }
 }

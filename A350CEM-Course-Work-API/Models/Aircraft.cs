@@ -8,5 +8,14 @@ namespace A350CEM_Course_Work.Models
 
         [Required]
         public string SerialNumber { get; set; }
+
+        [Required]
+        public string Model { get; set; }
+
+        [Required]
+        public int Milage { get; set; }
+
+        [Required]
+        public int FlightHours { get; set; }
     }
 }
