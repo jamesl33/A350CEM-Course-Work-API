@@ -33,7 +33,9 @@ namespace A350CEM_Course_Work.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            return await _context.Employees.ToListAsync();
+            var employees = from row in _context.Employees.Include(i => i.Team) select row;
+
+            return await employees.ToListAsync();
         }
 
         [HttpGet("byEmployeeNumber")]
